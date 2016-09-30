@@ -1,0 +1,100 @@
+{!
+@Language("JavaScript")
+!}
+var kzRadioApp = angular.module('kzRadioApp', [
+    'ngRoute',
+    'kzRadioControllers',
+    'kzFilters',
+    'ngAnimate'
+]);
+
+kzRadioApp.config(['$routeProvider', '$locationProvider', '$interpolateProvider', function($routeProvider, $locationProvider, $interpolateProvider) {
+    $interpolateProvider.startSymbol('[[');
+    $interpolateProvider.endSymbol(']]');
+
+    $locationProvider.html5Mode(true);
+
+    $routeProvider
+    {#menu.items}
+        .when('{url}', {
+            templateUrl: '/partials/{template}.html',
+            controller: '{template}Ctrl',
+            reloadOnSearch : false,
+            resolve: { '{template}':
+                function({template}Factory) {
+                    return {template}Factory.get({@eq key="magazine" value=template}0, 3{/eq});
+                }
+            }
+        })
+        {@ne key="homepage" value=template}
+        .when('{url}/:url', {
+            templateUrl: '/partials/{template}Single.html',
+            controller: '{template}SingleCtrl',
+            reloadOnSearch : false,
+            resolve: {
+                '{template}SingleFactory' : function({template}SingleFactory, $route) {
+                    return {template}SingleFactory.get($route.current.params.url);
+                }
+            }
+        })
+        {/ne}
+    {/menu.items}
+
+    {#post_urls.items}
+        .when('{url}', {
+            templateUrl: '/partials/magazineSingle.html',
+            controller: 'magazineSingleCtrl',
+            reloadOnSearch : false,
+            resolve: { 'magazineSingleFactory':
+                function(magazineSingleFactory, $route) {
+                    return magazineSingleFactory.get($route.current.originalPath.substr(1));
+                }
+            }
+        })
+    {/post_urls.items}
+
+    .when('/archive/channel/:id', {
+        templateUrl: '/partials/archive.html',
+        controller: 'archiveCtrl',
+        reloadOnSearch : false,
+        resolve: {
+            'shows' : function(showsFactory, $route) {
+                return showsFactory.getByChannel($route.current.params.id);
+            }
+        }
+    })
+    .when('/archive/broadcaster/:id', {
+        templateUrl: '/partials/archive.html',
+        controller: 'archiveCtrl',
+        reloadOnSearch : false,
+        resolve: {
+            'shows' : function(showsFactory, $route) {
+                return showsFactory.getByBroadcaster($route.current.params.id);
+            }
+        }
+    })
+    .when('/archive/posts/:id', {
+        templateUrl: '/partials/archivePosts.html',
+        controller: 'archivePostsCtrl',
+        reloadOnSearch : false,
+        resolve: {
+            'posts' : function(magazineFactory, $route) {
+                return magazineFactory.getByBroadcaster($route.current.params.id);
+            }
+        }
+    })
+    .when('/reset', {
+        templateUrl: '/partials/homepage.html',
+        controller: 'homepageCtrl',
+        reloadOnSearch : false,
+        resolve: {
+            'homepage' : function(homepageFactory, $route) {
+                return homepageFactory.get();
+            }
+        }
+    });
+}]);
+
+angular.element(document).ready(function() {
+    angular.bootstrap(document, ['kzRadioApp']);
+});

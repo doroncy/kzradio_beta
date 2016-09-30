@@ -1,0 +1,21 @@
+<ul class="border-part1">
+    <li class="section slide animate-show" ng-repeat="group in channels" ng-hide=" slide!=[[$index]] ">
+        <div class="item" ng-repeat="channel in group">
+            <div class="show_item" style="background: url([[channel.picture.url]]/convert?w=243&h=243&fit=crop) white;">
+                <a href="[[navigation.channels]][[channel.url]]"><div class="overlay">
+                    <h4 ng-show="[[channel.broadcaster.length > 0]]"><span>[[channel.title]]</span> - עם [[channel.broadcaster[0].first_name]] [[channel.broadcaster[0].last_name]]</h4>
+                    <h4 ng-hide="[[channel.broadcaster.length > 0]]"><span>[[channel.title]]</span></h4>
+                    <p class="time_info" ng-show="channel.weekday">
+                        [[channel.weekday]] |
+                        [[channel.start_time | time_short]] - [[channel.end_time | time_short]]
+                    </p>
+                    <p>
+                        [[channel.description | truncate]]
+                    </p>
+                </div></a>
+            </div>
+            <h4 ng-show="[[channel.broadcaster.length > 0]]" class="sub_title"><span>[[channel.title]]</span> - עם [[channel.broadcaster[0].first_name]] [[channel.broadcaster[0].last_name]]</h4>
+            <h4 ng-hide="[[channel.broadcaster.length > 0]]" class="sub_title"><span>[[channel.title]]</span></h4>
+        </div>
+    </li>
+</ul>

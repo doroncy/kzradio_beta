@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>KZRadio - רדיו הקצה</title>
+    <link rel="icon" href="/images/kz_favicon.ico"/>
+    <link rel="stylesheet" href="/components/mediaelement/build/mediaelementplayer.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/inner.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/custom.css" type="text/css"/>
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lte IE 7]>
+    <script src="js/IE8.js" type="text/javascript"></script>
+    <![endif]-->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            /*noinspection CommaExpressionJS,PointlessArithmeticExpressionJS*/
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            /*noinspection CommaExpressionJS*/
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-15378843-21', 'kzradio.net');
+        ga('send', 'pageview');
+    </script>
+</head>
+<body ng-controller="bodyCtrl" ng-class="{ home: home, opening: opening, closing: closing, opened: opened, closed: closed }">
+    <div class="body_wrapper" ng-controller="playerCtrl">
+        <div class="container">
+            <div class="throbber" ng-class="{ hide: ready, removed: removeThrobber }">
+                <img src="/images/probar_kz.gif">
+            </div>
+            <header class="header"
+                    ng-class="{ open: login_show || signup_show || playlist_show || profile_show || forgot_show || reset_show }"
+                    style="height: [[header_height]]px;">
+                {!
+                <div class="sidebar login login_side scrollbar white" ng-class="{ show: login_show }">
+                    <h1>כניסה</h1>
+
+                    <div class="black-border"></div>
+                    <form name="loginForm" id="login" novalidate>
+                        <div>
+                            <label>אי-מייל:</label>
+                            <input type="email" ng-model="$parent.user_data.email" required/>
+                        </div>
+                        <div>
+                            <label>סיסמא:</label>
+                            <input type="password" ng-model="$parent.user_data.password" required/>
+                        </div>
+                        <div class="remember_me">
+                            <input id="rememberme" type="checkbox" ng-model="$parent.user_data.rememberme"/>
+                            <label class="rememberme" for="rememberme">שמור סיסמא</label>
+                        </div>
+                        <div class="forgot_password">
+                            <a href="" ng-click="toggleShow('forgot')">שכחת סיסמא?</a>
+                        </div>
+                        <div class="submit centered">
+                            <input type="submit" value="שלח" ng-click="login(user_data)"/>
+                        </div>
+                    </form>
+                    <h4 class="error">[[login_error]]</h4>
+                </div>
+
+                <div class="sidebar login forgot_side scrollbar white" ng-class="{ show: forgot_show }">
+                    <h1>שכחתי סיסמא</h1>
+
+                    <div class="black-border"></div>
+                    <form ng-hide="forgot_message" id="login">
+                        <div>
+                            <label>אי-מייל:</label>
+                            <input type="email" ng-model="$parent.user_data.email" required/>
+                        </div>
+
+                        <div class="submit centered">
+                            <input type="submit" value="שלח" ng-click="forgotPassword(user_data)"/>
+                        </div>
+                    </form>
+                    <h4 class="error">[[forgot_error]]</h4>
+                    <h4 ng-show="forgot_message" class="forgot_message">[[forgot_message]]</h4>
+                </div>
+
+                <div class="sidebar login reset_side scrollbar white" ng-class="{ show: reset_show }">
+                    <h1>שינוי סיסמא</h1>
+
+                    <div class="black-border"></div>
+                    <form id="signup">
+                        <div>
+                            <label>סיסמא חדשה:</label>
+                            <input type="password" ng-model="$parent.user_data.password" required/>
+                        </div>
+                        <div>
+                            <label>אימות סיסמא:</label>
+                            <input type="password" ng-model="$parent.user_data.confirm_pass"/>
+                        </div>
+                        <div class="submit centered">
+                            <input type="submit" value="שלח" ng-click="resetPassword(user_data)"/>
+                        </div>
+                    </form>
+                    <h4 class="error">[[reset_error]]</h4>
+                </div>
+
+                <div class="sidebar login signup_side scrollbar white" ng-class="{ show: signup_show }">
+                    <h1>הרשמה</h1>
+
+                    <div class="black-border"></div>
+                    <form id="signup">
+                        <div>
+                            <label>אי-מייל:</label>
+                            <input type="email" ng-model="$parent.user_data.email" required/>
+                        </div>
+                        <div>
+                            <label>סיסמא:</label>
+                            <input type="password" ng-model="$parent.user_data.password" required/>
+                        </div>
+                        <div>
+                            <label>אימות סיסמא:</label>
+                            <input type="password" ng-model="$parent.user_data.confirm_pass"/>
+                        </div>
+                        <div>
+                            <label>שם פרטי:</label>
+                            <input class="rtl" type="text" ng-model="$parent.user_data.first_name" required/>
+                        </div>
+                        <div>
+                            <label>שם משפחה:</label>
+                            <input class="rtl" type="text" ng-model="$parent.user_data.last_name"/>
+                        </div>
+                        <div>
+                            <label>ישוב:</label>
+                            <input class="rtl" type="text" ng-model="$parent.user_data.town"/>
+                        </div>
+                        <div class="submit centered">
+                            <input type="submit" value="שלח" ng-click="signup(user_data)"/>
+                        </div>
+                    </form>
+                    <h4 class="error">[[signup_error]]</h4>
+                </div>
+
+                <div class="sidebar profile scrollbar white" ng-class="{ show: profile_show }">
+                    <h1>היי [[user.first_name]]</h1>
+
+                    <div class="black-border"></div>
+                    <ul class="settings">
+                        <li class="title item_favorite_shows">
+                            <div class="wrapper">
+                                <h4 data-ng-click="expandItem('favorite_shows', 'profile')">תכניות ששמרת<i class="arrow"></i></h4>
+                                <ul class="inner">
+                                    <li ng-show="user.favorite_shows.length > 0" ng-repeat="show in user.favorite_shows" ng-click="setShow([[show._id]])">
+                                        <i class="favorite_play_icon"></i><div class="title">[[show.description]]</div>
+                                        <i class="close" ng-click="removeFromFavorites(show._id, 'favorite_shows')"></i>
+                                    </li>
+                                    <h5 ng-hide="user.favorite_shows.length > 0">
+                                        אין לך אף תכנית שמורה, אבל מצה שמורה כן?
+                                    </h5>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="title item_favorite_tracks">
+                            <div class="wrapper">
+                                <h4 data-ng-click="expandItem('favorite_tracks', 'profile')">שירים שאהבת<i class="arrow"></i></h4>
+                                <ul class="inner">
+                                    <li ng-show="user.favorite_tracks.length > 0" ng-repeat="track in user.favorite_tracks">
+                                        <div class="title">[[track.artist]] - [[track.title]]</div>
+                                        <i class="close" ng-click="removeFromFavorites(track._id, 'favorite_tracks')"></i>
+                                    </li>
+                                    <h5 ng-hide="user.favorite_tracks.length > 0">
+                                        לא אהבת אף שיר...
+                                    </h5>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="border"></li>
+                    </ul>
+                </div>
+                !}
+
+                <div class="sidebar playlist" ng-class="{ show: playlist_show }">
+                    <playlist></playlist>
+                </div>
+
+                <div class="background" style="height: [[background_size]]px;" ng-class="{ front: opening || opened || closing }"></div>
+
+                <div class="header_controls" style="height: [[header_height]]px;">
+                    <div class="site-width">
+
+                        <section>
+                            <userctrl info="user">
+
+                            </userctrl>
+                        </section>
+
+                        <div class='white-border'></div>
+                        <div class="banner">
+                            <playercntrls top="true"></playercntrls>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="navigation">
+                    <div class="site-width">
+                        <section>
+                            <nav>
+                                <ul>
+                                    {#menu.items}
+                                        <li><a href="" ng-click="redirect('{url}')">{title}</a></li>
+                                    {/menu.items}
+                                </ul>
+                            </nav>
+                        </section>
+                    </div>
+                </div>
+                <div class="banner-right">
+                    <div class="box1">
+                        <p ng-show="curr_show.broadcaster.length > 0" class="line1">
+                            <a href="/shows[[curr_show.channel[0].url]]">[[curr_show.channel[0].title]]</a>&nbsp;
+- עם
+                            &nbsp;<a href="/djs[[curr_show.broadcaster[0].url]]"><b>[[curr_show.broadcaster[0].first_name]] [[curr_show.broadcaster[0].last_name]]</b></a>
+                            <span ng-repeat="broadcaster in curr_show.broadcaster" ng-if="!$first">
+                             &nbsp;
+                            <a href="/djs[[broadcaster.url]]"><b>ו[[broadcaster.first_name]] [[broadcaster.last_name]]</b></a>
+                            </span>
+                        </p>
+
+                        <p ng-show="curr_show.broadcaster.length === 0" class="line1">
+                            [[curr_show.channel[0].title]]
+                        </p>
+
+                        <p class="whiteborder"></p>
+
+                        <p ng-show="curr_show.description.length > 0" class="line2">
+                            [[curr_show.description]]
+                        </p>
+
+                        <div class="line2">
+                            <p class="info">
+                                [[curr_show.date | date_short]]&nbsp;|&nbsp;יום [[curr_show.date | day]]&nbsp;|&nbsp;[[curr_show.start_time]]&nbsp;-&nbsp;[[curr_show.end_time]]
+                            </p>
+                            <!-- TODO: P2 -->
+                            <ul>
+                                <li><i class="share"></i></li>
+                                <!--li ng-click="addToFavorites(curr_show._id, 'favorite_shows')"><i class="favourite"></i></li-->
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="box2">
+                        <p ng-show="curr_playing_item_id && !curr_playing_item_tooltip" class="line1">&nbsp;-&nbsp;עכשיו&nbsp;מתנגן&nbsp;-</p>
+                        <p ng-show="!!curr_playing_item_tooltip || !curr_playing_item_id" class="line1">&nbsp;</p>
+
+                        <div class="banner-logo">
+                            <img width="315" height="315" ng-src="[[curr_playing_item.image.url]]/convert?w=315&h=315&amp;fit=crop">
+
+                            <!-- TODO: P2 -->
+                            <!--div class="overlay">
+                                <i ng-show="playing" class="like" ng-click="addToFavorites(curr_playing_item_id, 'favorite_tracks')"></i>
+                                <i class="comment" ng-click="showInfo(curr_playing_item_id)"></i>
+                            </div-->
+                        </div>
+
+                        <p class="line2" ng-switch on="curr_playing_item.item_type">
+                            <span ng-switch-when="track">[[curr_playing_item.artist]] - [[curr_playing_item.title]]</span>
+                            <span ng-switch-when="undefined">[[curr_playing_item.title]]</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="notification_logo" style="margin-left: [[side_center + 455]]px;}" ng-class="{ open: login_show || signup_show || playlist_show || profile_show || forgot_show || reset_show, open_right: playlist_right_show  }">
+                    <img src="/images/logo_up.png">
+
+                    <div class="message" ng-class="{ open : notification }">
+                        <h5>[[notification]]</h5>
+                    </div>
+                    <img src="/images/logo_down.png">
+                </div>
+
+            </header>
+            <div class="banner-bottom-section-holder">
+                <div class="banner-bottom-section" ng-class="{ live : live, bottom_drop: !home }">
+                <audio id="player2" style="display: none;">
+                </audio>
+                <div id="player_fake" ng-show="live" ng-model="tooltip_left" ng-class="{ playing: live && playing }">
+                    <canvas id="canvas"></canvas>
+                </div>
+
+                <div class="green-blocks">
+                    <ul class="info_bar">
+                        <!--TODO: P2 -->
+                        <!--div class="comment_tooltip tooltip">
+                            <div class="tooltip_content">
+                                <h3 class="message">נוספה תגובה חדשה</h3>
+                            </div>
+                            <div class="arrow"></div>
+                        </div-->
+                        <li ng-repeat="item in info_bar" class="info_item info_bar_[[item.lineupItem._id]]"
+                            ng-class="{ live: live, background_[[item.background]] : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }"
+                            data-id="[[item.item.lineupItem._id]]" ng-mouseleave="hideInfoTip([[item.lineupItem._id]])"
+                            ng-mouseover="showInfoTip([[item.lineupItem._id]])" style="width: [[item.slice]]px;">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="content_wrapper cf">
+            <div class="content" ng-class="{ open: (login_show || signup_show || playlist_show || profile_show || forgot_show || reset_show) && !home, open_right: playlist_right_show }" ng-view>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="site-width">
+        <div class="left">
+            <div class="social">
+                {#config.footer_icons}
+                    <a href={url}><img src="/images/inner/{icon}_green.png" alt=""/></a>
+                {/config.footer_icons}
+            </div>
+        </div>
+        <div class="right">
+            <nav>
+                {#footer_links}
+                    <ul>
+                        <li class="category">{header}</li>
+                        {#links}
+                            <li><a href="{url}">{title}</a></li>
+                        {/links}
+                    </ul>
+                {/footer_links}
+            </nav>
+            <div class='white-border'></div>
+        </div>
+    </div>
+</footer>
+
+    <script src="//cdn.ravenjs.com/1.1.16/raven.js"></script>
+    <script>
+        Raven.config('https://b66ac376c06c4c88a1dbaa05ef16d352@app.getsentry.com/38371').install();
+    </script>
+
+    <script src="/components/jquery/dist/jquery.js"></script>
+    <script src="/components/moment/moment.js"></script>
+    <script src="/components/sugar/release/sugar-full.development.js"></script>
+    <script src="/components/jquery.preloadimages/jquery.preloadimages.js"></script>
+    <script src="/components/lodash/dist/lodash.js"></script>
+    <script src="/components/angular/angular.js"></script>
+    <script src="/components/mediaelement/build/mediaelement-and-player.js"></script>
+    <script src="/js/vendor/jquery.prettyPhoto.js"></script>
+    <script src="/components/angular-resource/angular-resource.js"></script>
+    <script src="/components/angular-route/angular-route.js"></script>
+    <script src="/components/angular-animate/angular-animate.js"></script>
+    <script src="/components/jquery-backstretch/jquery.backstretch.js"></script>
+    <script src="/components/WOW/dist/wow.js"></script>
+    <script src="/components/jquery.event.drag-drop/event.drag/jquery.event.drag.js"></script>
+    <script src="/components/jquery.transform.js/jquery.transform2d.js"></script>
+    <script src="/components/socket.io-client/socket.io.js"></script>
+    <script src="/js/custom.js"></script>
+    <script src="/js/filters.js"></script>
+    <script src="/js/services.js"></script>
+    <script src="/js/controllers.js"></script>
+    <script src="/js/bodyController.js?ver=1"></script>
+    <script src="/js/playerController.js"></script>
+    <script src="/js/contentControllers.js"></script>
+    <script src="/routes.js"></script>
+    <script src="/js/player.js"></script>
+
+    {?user}
+    <script>
+                var thereIsALoggedInUser = true;
+    </script>
+    {/user}
+</body>
+</html>

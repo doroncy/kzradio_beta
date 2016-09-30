@@ -1,0 +1,22 @@
+{
+  "name": "jquery.preloadimages",
+  "main": "jquery.preloadimages.js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/MattCain/jquery.preloadimages",
+  "authors": [
+    "Matt Cain <matt@cainmedia.com>"
+  ],
+  "description": "jQuery plugin to preload an array of image paths",
+  "keywords": [
+    "preload",
+    "images"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

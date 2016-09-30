@@ -1,0 +1,12 @@
+<div class="post">
+    <div class="feature">{!<img src="{post.picture.url}" /></div>!}
+        <div class="post-data">
+            <h1>{title}</h1>
+           {! <p><a href="/שדרנים?broadcaster={user._id}"><span>מאת: {user.first_name} {user.last_name} {date}</span></a><br>{text}
+                <a href="{url}">
+                    קרא עוד >>
+                </a>
+            </p>!}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+<div class="body homepage">
+    <div class="site-width" >
+        <article class="gallery1">
+            <section class="promotion" ng-repeat="item in promotions" ng-switch on="item.size">
+                <img ng-switch-when="small" ng-src="[[item.picture.url]]/convert?w=158&h=330&fit=crop" alt="" />
+                <img ng-switch-when="medium" ng-src="[[item.picture.url]]/convert?w=330&h=330&fit=crop" alt="" />
+                <img ng-switch-when="large" ng-src="[[item.picture.url]]/convert?w=502&h=330&fit=crop" alt="" />
+                <div class="overlay [[item.size]]" ng-show="item.item_type == 'archived_show'">
+                    <ul class="top_left">
+                        <li class="item_tag">[[item.tag]]</li>
+                        <li class="date">[[item.date | date]]</li>
+                        <li class="play_control">
+                            <a href="" ng-click="setShow(item.show_id)">
+                                <i class="play_icon"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="title">[[item.title]]</div>
+                </div>
+
+                <div class="overlay [[item.size]]" ng-hide="item.item_type == 'archived_show'">
+                    <a class="url" href="[[item.url]]" target="_blank">
+                        <ul class="top_left">
+                            <li class="item_tag">[[item.tag]]</li>
+                            <li class="date">[[item.date | date]]</li>
+                        </ul>
+
+                        <div class="title">[[item.title]]</div>
+                    </a>
+                </div>
+
+            </section>
+        </article>
+        <h1>המצעד</h1>
+        <article class="blocks">
+            <section ng-repeat="chart in charts" ng-model="chart.picture_id" ng-init="chart.picture_id = chart.items[0]._id">
+                <p class="line1">- [[chart.title]] -</p>
+                <p><img ng-src="[[ chart_images[chart.picture_id] ]]" title="chart.items[0].title" /></p>
+                <div class="black" ng-repeat="item in chart.items" ng-mouseenter="start_marquee(item._id)" ng-click="addToFavorites(item._id, 'favorite_tracks')" ng-mouseover="chart.picture_id = item._id; scroll = true" ng-mouseleave="chart.picture_id = chart.items[0]._id; scroll = false; stop_marquee(item._id);">
+                    <div class="index">[[$index + 1]].</div>
+                    <div class="item_title" ng-hide="scroll">[[item.title]] - [[item.artist]]</div>
+                    <div class="marquee" ng-show="scroll"><p class="inner item_[[item._id]]">[[item.title]] - [[item.artist]]</p></div>
+                </div>
+            </section>
+        </article>
+        <!--<h1>בקשות מאזינים</h1>-->
+        <!--<article class="event-area">-->
+            <!--<section class="event">-->
+                <!--<h2>תוכנית הבקשות הבאה:</h2>-->
+                <!--<div class="col1">תוכנית הבקשות הבאה תוגש על ידי נועה ארגוב ביום חמישי ה27 לדצמבר בשעה 17:30</div>-->
+                <!--<div class="col2">-->
+                    <!--<p class="dayname">דצמבר</p>-->
+                    <!--<p class="date">27</p>-->
+                <!--</div>-->
+            <!--</section>-->
+            <!--<section class="event-form">-->
+                <!--<div class="col1"><img src="../images/even-form-image.jpg" alt="" /></div>-->
+                <!--<div class="col2">-->
+                    <!--<p>שם המוזיקאי <input type="text" name="one" id="one" class="box" /></p>-->
+                    <!--<p>שם השיר <input type="text" name="one" id="one" class="box" /></p>-->
+                    <!--<p>לינק? (לא חובה) <input type="text" name="one" id="one" class="box" /></p>-->
+                    <!--<p>כמה מילים? <input type="text" name="one" id="one" class="box" /></p>-->
+                <!--</div>-->
+                <!--<div class="bottom">-->
+                    <!--<div class="col1"><input type="submit" name="submit" value="שלח" class="submit" /></div>-->
+                    <!--<div class="col2"><input type="checkbox" name="chk" class="chk">&nbsp;&nbsp;ידע אותי אם השיר נבחר</div>-->
+                <!--</div>-->
+            <!--</section>-->
+        <!--</article>-->
+        <!--<h1>לוח אירועים</h1>-->
+        <!--<article class="calendar">-->
+            <!--<section class="col1"><img src="../images/calendar-image.jpg" alt="" /></section>-->
+            <!--<section class="col2">-->
+                <!--<p><a href="#">ספיישל די ג’יי קוזה שמגיע לבלוק עם אגוזי</a></p>-->
+                <!--<p><a href="#">ספיישל אינדי סיטי, עם צוות הקצה!</a></p>-->
+                <!--<p><a href="#">ויתרתי במופע איחוד בבראבי. לכרטיסים בהנחה לחץ כאן</a></p>-->
+                <!--<p><a href="#">ויתרתי במופע איחוד בבראבי. לכרטיסים בהנחה לחץ כאן</a></p>-->
+            <!--</section>-->
+            <!--<section class="col3">-->
+                <!--<ul>-->
+                    <!--<li><p class="dayname">דצמבר</p><p class="date">26</p></li>-->
+                    <!--<li class="active"><p class="dayname">דצמבר</p><p class="date">25</p></li>-->
+                    <!--<li><p class="dayname">דצמבר</p><p class="date">24</p></li>-->
+                    <!--<li class="navigation"><img src="../images/date-navigation.jpg" alt="" /></li>-->
+                    <!--<li><p class="dayname">דצמבר</p><p class="date">30</p></li>-->
+                    <!--<li><p class="dayname">דצמבר</p><p class="date">29</p></li>-->
+                    <!--<li><p class="dayname">דצמבר</p><p class="date">28</p></li>-->
+                    <!--<li><p class="dayname">דצמבר</p><p class="date">27</p></li>-->
+                <!--</ul>-->
+            <!--</section>-->
+        <!--</article>-->
+    </div>
+</div>

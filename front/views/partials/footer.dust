@@ -1,0 +1,24 @@
+<footer class="footer">
+    <div class="site-width">
+        <div class="left">
+            <div class="social">
+                {#config.footer_icons}
+                    <a href={url}><img src="/images/inner/{icon}_green.png" alt="" /></a>
+                {/config.footer_icons}
+            </div>
+        </div>
+        <div class="right">
+            <nav>
+                {#footer_links}
+                <ul>
+                    <li class="category">{header}</li>
+                    {#links}
+                        <li><a href="{url}">{title}</a></li>
+                    {/links}
+                </ul>
+                {/footer_links}
+            </nav>
+            <div class='white-border'></div>
+        </div>
+    </div>
+</footer>

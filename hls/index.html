@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>HTML5 MediaElement - HLS</title>
+
+	<script src="//code.jquery.com/jquery-2.1.3.js"></script>
+	<script src="./mediaelement-and-player.js"></script>
+</head>
+<body>
+
+<h1>MediaElementPlayer.js</h1>
+
+<h2>HLS Wrapper</h2>
+
+<audio id="player2">
+
+    <!-- Pseudo HTML5 -->
+    <source type="application/x-mpegURL" src="http://s2.kzradio.net/live/aac/playlist.m3u8" />
+
+</audio>
+
+<span id="player1-mode"></span>
+
+<h3> Test Videos </h3>
+<div> The following videos should stream correctly. Each time an
+issue is reported with a sample playlist, it will be added in the list
+and verified after bugfixing </div>
+<ul id="streamlist">
+</ul>
+
+Check with your own Playlist ! <a href="http://s2.kzradio.net/live/aac/playlist.m3u8">beware of Cross Domain Policy</a><br>
+<input id="userInput" value="http://s2.kzradio.net/live/aac/playlist.m3u8" size="80"> <button onclick="userSubmit()">Load and Play</button><br>
+<p>
+
+<script type="text/javascript">
+
+function userSubmit() {
+   loadStream(document.getElementById('userInput').value);
+}
+
+function loadStream(url) {
+	$('#player2')[0].player.setSrc(url);
+	$('#player2')[0].player.play();
+}
+
+</script>
+
+
+<script>
+
+$('#player2').mediaelementplayer({
+	enablePluginDebug: true,
+	pluginVars: "isvideo=true",
+	success: function(media, node, player) {
+		$('#' + node.id + '-mode').html('mode: ' + media.pluginType);
+	}
+});
+
+</script>
+
+</body>
+</html>

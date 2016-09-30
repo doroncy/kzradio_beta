@@ -1,0 +1,27 @@
+<div class="banner-area">
+    <div class="site-width">
+        <h1>ארכיון</h1>
+    </div>
+</div>
+<div class="body show">
+    <div class="site-width">
+        <article class="border-part3_2">
+            <h3>לפי תאריך</h3>
+            <div class="post" ng-repeat="post in posts">
+
+                <a href="[[post.navigation.url]][[post.url]]"><div class="feature"><img ng-src="[[post.picture.url]]/convert?w=254&h=107&fit=crop"></div></a>
+                <div class="post-data">
+                    <a href="[[post.navigation.url]][[post.url]]"><h1>[[post.title]]</h1></a>
+                    <p>
+                            <span>
+    מאת:
+                                <a href="[[navigation.broadcasters]]/[[post.user._id]]" class="author">[[post.user.first_name]] [[post.user.last_name]]</a> [[post.date | date]]
+                            </span>
+                        <a href="[[post.navigation.url]][[post.url]]"><br>[[post.text | st | truncate ]]קרא עוד >></a>
+                    </p>
+                </div>
+
+            </div>
+        </article>
+    </div>
+</div>

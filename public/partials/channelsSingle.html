@@ -1,0 +1,101 @@
+<div class="banner-area show">
+    <div class="site-width">
+        <h1>
+            <span class="title">[[channel.title.trim()]]</span>
+            <span>- עם</span>
+            <span>[[channel.broadcaster[0].first_name]] [[channel.broadcaster[0].last_name]]</span>
+            <span ng-repeat="broadcaster in channel.broadcaster" ng-if="!$first">ו[[broadcaster.first_name]] [[broadcaster.last_name]]</span>
+        </h1>
+
+        <h1 ng-hide="channel.broadcaster.length > 0">
+            <span class="title">
+[[channel.title]]
+            </span>
+        </h1>
+    </div>
+</div>
+<div class="body show">
+    <div class="site-width">
+        <article class="border-part1">
+            <section class="right">
+                <section class="section">
+                    <div class="row show">
+                        <div class="last_show" style="background: url([[shows[0].default_info_item.image.url]]/convert?w=383&h=388&fit=crop) white;">
+                            <div class="overlay">
+                                <h4>התכנית האחרונה</h4>
+                                <a class="play_btn" href="" ng-click="setShow(shows[0]._id)">
+                                    <img src="../images/play_icon_white.png"/>
+                                </a>
+                                <!-- TODO: P2 -->
+                                <!--div class="controls">
+                                    <a class="like" href="" ng-click="addToFavorites(shows[0]._id, 'favorite_shows')"><img src="../images/heart_icon.png"/></a>
+                                    <a class="export" href="#"><img src="../images/export_icon.png"/></a>
+                                    <a class="favorites" href="#"><h4>הוסף למועדפים</h4></a>
+                                </div-->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="comments">
+                    <comments info="channel" type="'channel'" cmnt="$parent.$parent.new_comment"></comments>
+                </section>
+            </section>
+            <section class="left broadcaster-text">
+                <div ng-show="channel.description" class="show_info">
+                    <p>
+                        [[channel.description]]
+                    </p>
+                </div>
+                <!-- TODO P2 -->
+                <!--div class="row facebook">
+                    <iframe src="http://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=50" scrolling="no" frameborder="0" style="border:none; overflow:hidden;width:380px; height:50px;" allowTransparency="true"></iframe>
+                </div-->
+                <section class="section1 previous_shows">
+                    <div class="row1">
+                        <p class="left"><b>תאריך</b></p>
+                        <p class="right"><b>תוכניות אחרונות</b></p>
+                    </div>
+                    <a href="" class="row" ng-repeat="show in shows" ng-class="{ active: show._id == $parent.curr_show._id, playing: playing }" ng-click="setShow(show._id)">
+                        <p class="active"></p>
+                        <p class="left">[[show.date|date]]</p>
+                        <p class="right">[[show.description]]</p>
+                    </a>
+                    <a href="/archive/channel[[channel.url]]" class="left-navigation">לכל התכניות >></a>
+                </section>
+            </section>
+        </article>
+    </div>
+    <div class="site-width" ng-show="channel.gallery.length > 0">
+        <section class="section gallery">
+            <h2 class="sub_title">גלריה</h2>
+            <div id="gallery" class="gallery_content">
+                <a prettyp ng-repeat="image in channel.gallery" href="[[image.url]]" rel="prettyPhoto[main]" target="_blank">
+                    <img ng-src="[[image.url]]/convert?w=195&h=195&fit=crop">
+                </a>
+            </div>
+        </section>
+    </div>
+    <div class="site-width shows shows_recommennded" ng-show="channel.recommended.length > 0">
+        <section class="section recommended gallery">
+            <h2 class="sub_title">אם אהבת את זה, יש גם את אלו</h2>
+
+            <div class="item" ng-repeat="rec in channel.recommended">
+                <div class="show_item" style="background: url([[rec.picture.url]]/convert?w=315&h=315&fit=crop) white;">
+                    <a href="/תכניות/[[rec._id]]">
+                        <div class="overlay">
+                            <h4><span>[[channel.title]]</span> - עם [[rec.broadcaster[0].first_name]] [[rec.broadcaster[0].last_name]]</h4>
+                            <p class="time_info">
+                                [[rec.weekday]] |
+                                [[rec.start_time]] - [[rec.end_time]]
+                            </p>
+                            <p>
+                                [[rec.description | truncate]]
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <h4 class="sub"><span>[[channel.title]]</span> - עם [[channel.broadcaster[0].first_name]] [[channel.broadcaster[0].last_name]]</h4>
+            </div>
+        </section>
+    </div>
+</div>

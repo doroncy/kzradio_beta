@@ -1,0 +1,14 @@
+{
+  "name": "jquery.transform.js",
+  "homepage": "https://github.com/louisremi/jquery.transform.js",
+  "_release": "83129b483d",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "83129b483d8336de50b7e60cd58b94c08bc951b7"
+  },
+  "_source": "git://github.com/louisremi/jquery.transform.js.git",
+  "_target": "*",
+  "_originalSource": "louisremi/jquery.transform.js",
+  "_direct": true
+}

@@ -1,0 +1,21 @@
+CKEDITOR.plugins.setLang('youtube', 'he', {
+	button : 'הטמע וידאו',
+	title : 'הטמע וידאו',
+	txtEmbed : 'הדבק קוד הטמעה כאן',
+	txtUrl : 'הדבק קישור וידאו כאן',
+	txtWidth : 'רוחב',
+	txtHeight : 'גובה',
+	chkRelated : 'הראה וידאוים מומלצים בסוף הוידאו',
+	txtStartAt : 'התחל מ (ss or mm:ss or hh:mm:ss)',
+	chkPrivacy : 'הפעל הגדרת פרטיות משופרת',
+	chkOlderCode : 'השתמש בקוד הטמעה ישן',
+	noCode : 'נא להזין קוד הטמעה',
+	invalidEmbed : 'קוד ההטמעה אינו תקין',
+	invalidUrl : 'הקישור אינו תקין',
+	or : 'או',
+	noWidth : 'אין רוחב',
+	invalidWidth : 'רוחב לא תקין',
+	noHeight : 'אין גובה',
+	invalidHeight : 'גובה לא תקין',
+	invalidTime : 'פורמט זמן לא תקין'
+});

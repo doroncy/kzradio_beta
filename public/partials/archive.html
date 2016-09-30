@@ -1,0 +1,26 @@
+<div class="banner-area show">
+    <div class="site-width">
+        <h1 ng-show="broadcaster">ארכיון
+             [[broadcaster.first_name]] [[broadcaster.last_name]]
+        </h1>
+        <h1 ng-show="channel">ארכיון [[channel.title]]</h1>
+
+    </div>
+</div>
+<div class="body show">
+    <div class="site-width">
+        <section class="section gallery">
+            <div class="gallery_content">
+                <div class="show_single" data-show-id="[[show._id]]" ng-repeat="show in shows" ng-click="setShow(show._id)">
+                    <img ng-show="show.picture.url.length === 0" ng-src="[[channel.picture.url]]/convert?w=195&h=195&fit=crop" width="195" height="195">
+                    <img ng-show="show.picture.url.length > 0" ng-src="[[show.picture.url]]/convert?w=195&h=195&fit=crop" width="195" height="195">
+                    <div class="overlay">
+                        <h4 class="title"><span>[[channel.title]]</span> - [[show.broadcaster[0].first_name]] [[show.broadcaster[0].last_name]]</h4>
+                        <h4 class="description">[[show.description]]</h4>
+                        <h4 class="date">[[show.date | date]] | [[show.start_time | time_short]] - [[show.end_time | time_short]]</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

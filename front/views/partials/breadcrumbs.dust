@@ -1,0 +1,5 @@
+<a href="/">{config.site.homepage}</a>
+
+{#crumbs}
+    {^last} <a href="{url}">{title}</a> {:else} {title} {/last}
+{/crumbs}

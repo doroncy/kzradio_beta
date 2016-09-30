@@ -1,0 +1,59 @@
+<ul class="controls">
+    <li ng-hide="$parent.playing" ng-click="$parent.play()" ng-class="{ hidden: !top && $parent.home }">
+        <div class="icon"><i class="play_button"></i></div>
+        <div class="info_tooltip">
+            <div class="tooltip_border"></div>
+            <h4 class="title">נגן תכנית</h4>
+        </div>
+    </li>
+    <li ng-show="$parent.playing" ng-click="$parent.stop()" ng-class="{ hidden: !top && $parent.home }">
+        <div class="icon"><i class="pause_button"></i></div>
+        <div class="info_tooltip">
+            <div class="tooltip_border"></div>
+            <h4 class="title">עצור תכנית</h4>
+        </div>
+    </li>
+
+    <li ng-class="{ hidden: !top && $parent.home }" ng-click="$parent.setShow($parent.curr_show.prev_next.prev_show)" ng-show="$parent.curr_show.prev_next.prev_show">
+        <div class="icon"><i class="backward_button" title="{{ $parent.curr_show.prev_next.prev_show.description }}"></i></div>
+        <div class="info_tooltip">
+            <div class="tooltip_border"></div>
+            <h4 class="title">לתכנית הקודמת</h4>
+        </div>
+    </li>
+
+    <li ng-class="{ hidden: !top && $parent.home, removed : $parent.live }" ng-click="$parent.setShow($parent.curr_show.prev_next.next_show)" ng-show="$parent.curr_show.prev_next.next_show">
+        <div class="icon"><i class="forward_button" title="{{ $parent.curr_show.prev_next.next_show.description }}"></i></div>
+        <div class="info_tooltip">
+            <div class="tooltip_border"></div>
+            <h4 class="title">לתכנית הבאה</h4>
+        </div>
+    </li>
+
+    <!-- TODO P2 -->
+    <!--li ng-class="{ hidden: !top && $parent.home }">
+        <div class="icon">
+            <i ng-show="top" class="playlist_button" ng-click="$parent.toggleShow('playlist')"></i>
+            <i ng-hide="top" class="playlist_button" ng-click="$parent.toggleShow('playlist_right')"></i>
+        </div>
+        <!--div class="info_tooltip">
+            <div class="tooltip_border"></div>
+            <h4 class="title">פלייליסט</h4>
+        </div>
+    </li-->
+    <li class="volume" ng-class="{ hidden: !top && $parent.home, hover : hover }" ng-model="hover" ng-mouseenter="hover=true" ng-mouseleave="hover=dragging">
+        <div class="icon">
+            <i class="volume_button"></i>
+            <i class="groove"></i>
+        </div>
+        <div class="info_tooltip volume_tooltip" ng-click="changeVolumeFromBar($event)">
+            <ul class="volume_bars">
+                <li class="bar bar_5" ng-class="{ green : $parent.volume > 0.8 }"></li>
+                <li class="bar bar_4" ng-class="{ green : $parent.volume > 0.6 }"></li>
+                <li class="bar bar_3" ng-class="{ green : $parent.volume > 0.4 }"></li>
+                <li class="bar bar_2" ng-class="{ green : $parent.volume > 0.2 }"></li>
+                <li class="bar bar_1" ng-class="{ green : $parent.volume > 0.01 }"></li>
+            </ul>
+        </div>
+    </li>
+</ul>

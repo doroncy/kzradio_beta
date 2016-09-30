@@ -1,0 +1,66 @@
+<div class="title">
+    <h1>פלייליסט -
+        [[curr_show.channel[0].title]]
+    </h1>
+
+    <h2> [[curr_show.date | date_short]] |
+        יום [[curr_show.date | day]] |
+        [[curr_time | time]]
+    </h2>
+</div>
+<div class="playlist-inner scrollbar black">
+    <ul class="albums">
+        <li ng-repeat="item in info_bar" class="transitions playlist_item item_[[item.lineupItem._id]]"
+            ng-class="{ playing_item : curr_playing_item_id == item.lineupItem._id }" data-id="[[item.lineupItem._id]]">
+            <div class="wrapper">
+                <div class="item" style="background: url('[[item.lineupItem.image.url]]/convert?w=350&h=74&fit=crop') no-repeat"
+                     data-ng-click="expandItem(item.lineupItem._id, 'playlist')">
+                    <img class="play_btn" src="/images/play_icon_big.png">
+
+                    <h2 class="time">[[item.timestamp | time]]</h2>
+
+                    <h2 class="label" ng-if="item.type == track">[[item.lineupItem.artist]] -
+                        [[item.lineupItem.title]]</h2>
+
+                    <h2 class="label" ng-if="item.type != track">[[item.lineupItem.title]]</h2>
+                </div>
+                <div class="album_info">
+                    <img ng-src="[[item.lineupItem.image.url]]/convert?w=315&h=315&fit=crop"
+                         src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D"/>
+
+                    <div class="text" ng-if="item.type == track">
+                        <h3 class="artist">[[item.lineupItem.artist]]</h3>
+                        <h4 class="album">[[item.lineupItem.title]]</h4>
+                        <h4 class="label">[[item.lineupItem.label]]</h4>
+                        <h4 class="year">[[item.lineupItem.year]]</h4>
+                    </div>
+                    <div class="text" ng-if="item.type != track">
+                        <h3 class="artist">[[item.lineupItem.title]]</h3>
+
+                        <h3 class="artist">[[item.lineupItem.text]]</h3>
+                    </div>
+                </div>
+                <ul class="comments">
+                    <li class="comment" ng-repeat="comment in item.comments">
+                        <label class="name">[[comment.user.first_name]]</label>
+                        [[comment.text]]
+                    </li>
+                    <li class="new_comment">
+                        <textarea class="comment" ng-model="$parent.new_comment"
+                                  placeholder="אם יש לך משהו להגיד - זה הזמן:"></textarea>
+
+                        <!--<div class="button_background">-->
+                            <!--<input ng-show="user" class="comment_btn"-->
+                                   <!--ng-class="{ active: $parent.new_comment != '' }" type="submit" value="שלח"-->
+                                   <!--ng-click="createInfoItemComment($parent.new_comment, item.lineupItem._id)">-->
+                            <!--<input ng-hide="user" class="comment_btn"-->
+                                   <!--ng-class="{ active: $parent.new_comment != '' }" type="submit" value="הירשם ושלח"-->
+                                   <!--ng-click="loginAndSend($parent.new_comment, 'info_item', item.lineupItem._id)">-->
+                        <!--</div>-->
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="bottom_border"></li>
+    </ul>
+</div>

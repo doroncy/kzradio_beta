@@ -1,0 +1,29 @@
+<div class="banner-area show">
+    <div class="site-width title">
+        <h1>תוכניות</h1>
+    </div>
+</div>
+<div class="body shows">
+    <div class="site-width show_grid">
+        <carousel channels="channels" nav="navigation" slide="slide"></carousel>
+    </div>
+    <div class="site-width">
+        <article class="gallery1">
+            <section class="promotion" ng-repeat="item in promotions" ng-switch on="item.size">
+                <img ng-switch-when="small" ng-src="[[item.picture.url]]/convert?w=158&h=330&fit=crop" alt="" width="158" height="330"/>
+                <img ng-switch-when="medium" ng-src="[[item.picture.url]]/convert?w=330&h=330&fit=crop" alt="" width="158" height="330" />
+                <img ng-switch-when="large" ng-src="[[item.picture.url]]/convert?w=502&h=330&fit=crop" alt="" width="502" height="330" />
+                <div class="overlay [[item.size]]">
+                    <div class="tag">[[item.tag]]</div>
+                    <div class="title"><span>[[item.title]]</span></div>
+                </div>
+            </section>
+        </article>
+
+        <!-- TODO: P2 -->
+        <!--article class="gallery1 channel_promotions">
+            <h3>תוכניות שאסור לפספס</h3>
+        </article-->
+
+    </div>
+</div>

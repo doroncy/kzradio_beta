@@ -1,0 +1,57 @@
+<div class="banner-area">
+    <div class="banner" style="background: url([[broadcaster.picture.url]]/convert?w=1025&h=320&fit=crop) no-repeat;">
+        <h1>[[broadcaster.first_name]] [[broadcaster.last_name]]</h1>
+    </div>
+</div>
+<div class="body">
+    <div class="site-width">
+        <article class="border-part1">
+            <section class="left broadcaster-text">
+                <p class="data">[[broadcaster.text|st]]</p>
+                <!-- TODO: P2 -->
+                <!-- div class="facebook">
+                    <iframe src="http://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=50" scrolling="no" frameborder="0" style="border:none; overflow:hidden;width:380px; height:50px;" allowTransparency="true"></iframe>
+                </div-->
+                <div class="social-body" ng-show="broadcaster.links.length > 0">
+                    <a ng-repeat="link in broadcaster.links" href="[[link.url]]" target="_blank"><img ng-src="/images/inner/[[link.icon]].png" alt="" /></a>
+                </div>
+                <comments info="broadcaster" type="'broadcaster'" cmnt="$parent.$parent.new_comment"></comments>
+            </section>
+            <section class="right">
+                <ul class="gallery">
+                    <li ng-repeat="show in broadcaster.promo_shows" style="background: url([[show.picture.url]]/convert?w=174&h=331&fit=crop)">
+                        <a href="/תכניות/[[show._id]]"><div class="overlay">
+                            <h2 class="date">[[show.date|date]]</h2>
+                            <h3 class="title">[[show.title]]</h3>
+                        </div></a>
+                    </li>
+                </ul>
+                <section class="section1 previous_shows" ng-show="shows.length > 0">
+                    <div class="row1">
+                        <p class="left"><b>תאריך</b></p>
+                        <p class="right"><b>תוכניות אחרונות</b></p>
+                    </div>
+                    <a href="" class="row" ng-repeat="show in shows" ng-class="{ active: show._id == $parent.curr_show._id, playing: playing }" ng-click="setShow(show._id)">
+                        <p class="active"></p>
+                        <p class="left">[[show.date|date]]</p>
+                        <p class="right">[[show.description]]</p>
+                    </a>
+                    <a href="/archive/broadcaster[[broadcaster.url]]" class="left-navigation">לכל התכניות >></a>
+                </section>
+                <section class="section2 user_posts" ng-show="posts.length > 0">
+                    <div class="row1">
+                        <p class="left"><b>תאריך</b></p>
+                        <p class="right"><b>מאמרים אחרונים</b></p>
+                    </div>
+                    <a ng-repeat="post in posts" href="[[post.navigation.url]][[post.url]]">
+                        <div class="row">
+                            <p class="left">[[post.date|date]]</p>
+                            <p class="right">[[post.title]]</p>
+                        </div>
+                    </a>
+                    <a href="/archive/posts/[[broadcaster._id]]" class="left-navigation">לכל המאמרים >></a>
+                </section>
+            </section>
+        </article>
+    </div>
+</div>

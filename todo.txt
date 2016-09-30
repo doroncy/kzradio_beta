@@ -1,0 +1,96 @@
+models
+======
+
+users
+    fb connect (picture, name)
+    types [admin, producer, broadcaster, normal]
+    email, picture, text, links
+    forgotten password
+
+channels (=category) (ערוץ)
+    ref:broadcaster-user, name, day, permanent, picture
+
+program (=playlist) (תכנית)
+    ref:channels, name, start-time, end-time, archived-link, picture
+    status [draft, ready, on-air, archived]
+    items
+        name
+        artist
+        timestamp (from program start)
+        text
+        picture
+        link
+        video
+        interview
+        flier?
+
+events
+    name
+    text
+    place
+    start
+    end
+
+requests
+    musician, song, link, text, notify, ref:user
+
+config
+    footer links
+
+
+pages
+=====
+
+home
+    grid [items]
+    chart (המצעד)
+        configurable
+        by week/month/year
+        favourites by week/month/year
+        recent programs
+    events
+
+player
+    now playing
+    timeline
+        new comment tooltip
+    playlist
+    sync to audio
+    no current program
+    background live change
+    remember pause point
+    -> favourite (<3) (also at hover)
+        post to fb
+    -> fb share
+    -> save for later (+)
+    comments
+        -> comment
+    stick to top
+
+search (in magazine, programs, comments)
+    results
+
+personal area (הי דוד)
+    favorites
+    reminders
+    comments
+    settings
+    login
+    register
+
+archive
+    channel
+        program
+
+blog
+
+users
+    broadcasters
+    producers
+
+google analytic
+
+later
+=====
+store
+magazine

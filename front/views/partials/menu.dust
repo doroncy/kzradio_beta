@@ -1,0 +1,10 @@
+<nav>
+    <ul>
+        <li><a href="#"><img src="images/search-icon.png" alt="" style='padding-top:5px;' /></a></li>
+        {#menu}
+            {#items}
+                <li><a href="{url}" class="{?dock}active{/dock}">{title}</a></li>
+            {/items}
+        {/menu}
+    </ul>
+</nav>

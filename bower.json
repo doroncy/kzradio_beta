@@ -1,0 +1,26 @@
+{
+  "name": "kzradio",
+  "version": "0.0.2",
+  "repository": "Empeeric/kzradio",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "mediaelement": "",
+    "moment": "",
+    "jquery": "",
+    "sugar": "",
+    "lodash": "",
+    "angular": "",
+    "angular-route": "",
+    "angular-resource": "",
+    "jquery.event.drag-drop": "",
+    "socket.io-client": "~1.0.6"
+  }
+}

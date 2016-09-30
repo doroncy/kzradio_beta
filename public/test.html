@@ -1,0 +1,117 @@
+<html lang="he"><script async="" src="//www.google-analytics.com/analytics.js"></script><script id="tinyhippos-injected">if (window.top.ripple) { window.top.ripple("bootstrap").inject(window, document); }</script><head><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}.ng-animate-block-transitions{transition:0s all!important;-webkit-transition:0s all!important;}</style>
+    <meta charset="utf-8">
+    <title>KZRadio - רדיו הקצה</title>
+    <link rel="icon" href="/images/kz_favicon.ico">
+    <link rel="stylesheet" href="/components/mediaelement/build/mediaelementplayer.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/inner.css" type="text/css">
+    <link rel="stylesheet" href="css/custom.css" type="text/css">
+</head>
+
+<body ng-controller="bodyCtrl" ng-class="{ home: home }" class="ng-scope">
+
+<div class="container ng-scope" ng-controller="playerCtrl">
+
+<div class="banner-bottom-section" ng-class="{ live : live }">
+    <div id="mep_0" class="mejs-container svg mejs-audio mejs-long-video" style="width: 100%; height: 20px;"><div class="mejs-inner"><div class="mejs-mediaelement"><audio id="player2" src="http://pod.icast.co.il/8961105b-48e7-45da-84f1-f4acac3af679.icast.mp3" type="audio/mp4" style="display: none;"></audio></div><div class="mejs-layers"><div class="mejs-poster mejs-layer" style="display: none; width: 100%; height: 20px;"></div></div><div class="mejs-controls"><div class="mejs-time-rail" style="width: 1888px;"><span class="mejs-time-total" style="width: 1888px;"><span class="mejs-time-buffering" style="display: none;"></span><span class="mejs-time-loaded" style="width: 19.053523988957707px;"></span><span class="mejs-time-current" style="width: 0px;"></span><span class="mejs-time-handle" style="left: -7px;"></span><span class="mejs-time-float" style="display: none; left: 656px;"><span class="mejs-time-float-current">53:16</span><span class="mejs-time-float-corner"></span></span></span></div></div><div class="mejs-clear"></div></div></div>
+    <div id="player_fake" ng-show="live" ng-model="tooltip_left" class="ng-pristine ng-valid ng-hide">
+    </div>
+
+    <div class="green-blocks">
+        <ul class="info_bar">
+            <div class="comment_tooltip tooltip">
+                <div class="tooltip_content">
+                    <h3 class="message">נוספה תגובה חדשה</h3>
+                </div>
+                <div class="arrow"></div>
+            </div>
+            <!-- ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534bcd3f5a63550b00be8f02 background_1" ng-class="{ live: live, background_1 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534bcd3f5a63550b00be8f02)" style="width: 83px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534bde375a63550b00be8f0e background_1" ng-class="{ live: live, background_1 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534bde375a63550b00be8f0e)" style="width: 70px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534bdeda5a63550b00be8f24 background_3" ng-class="{ live: live, background_3 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534bdeda5a63550b00be8f24)" style="width: 57px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be0ce5a63550b00be8f38 background_3" ng-class="{ live: live, background_3 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be0ce5a63550b00be8f38)" style="width: 42px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be1295a63550b00be8f40 background_3" ng-class="{ live: live, background_3 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be1295a63550b00be8f40)" style="width: 28px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be1705a63550b00be8f4a background_0" ng-class="{ live: live, background_0 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be1705a63550b00be8f4a)" style="width: 69px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be1ec5a63550b00be8f4e background_3" ng-class="{ live: live, background_3 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be1ec5a63550b00be8f4e)" style="width: 40px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be2315a63550b00be8f52 background_0" ng-class="{ live: live, background_0 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be2315a63550b00be8f52)" style="width: 81px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be29b5a63550b00be8f58 background_0" ng-class="{ live: live, background_0 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be29b5a63550b00be8f58)" style="width: 35px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be2d25a63550b00be8f5e background_1" ng-class="{ live: live, background_1 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be2d25a63550b00be8f5e)" style="width: 90px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be3165a63550b00be8f62 background_0" ng-class="{ live: live, background_0 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be3165a63550b00be8f62)" style="width: 51px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be3635a63550b00be8f66 background_0" ng-class="{ live: live, background_0 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be3635a63550b00be8f66)" style="width: 119px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be3d85a63550b00be8f6e background_0" ng-class="{ live: live, background_0 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be3d85a63550b00be8f6e)" style="width: 46px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be41e5a63550b00be8f72 background_0" ng-class="{ live: live, background_0 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be41e5a63550b00be8f72)" style="width: 58px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be4625a63550b00be8f78 background_0" ng-class="{ live: live, background_0 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be4625a63550b00be8f78)" style="width: 85px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be4e25a63550b00be8f80 background_0" ng-class="{ live: live, background_0 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be4e25a63550b00be8f80)" style="width: 67px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be51f5a63550b00be8f84 background_0" ng-class="{ live: live, background_0 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be51f5a63550b00be8f84)" style="width: 33px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be5675a63550b00be8f8a background_0" ng-class="{ live: live, background_0 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be5675a63550b00be8f8a)" style="width: 52px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be5e35a63550b00be8f8e background_0" ng-class="{ live: live, background_0 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be5e35a63550b00be8f8e)" style="width: 52px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be65c5a63550b00be8f92 background_0" ng-class="{ live: live, background_0 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be65c5a63550b00be8f92)" style="width: 37px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be6875a63550b00be8f96 background_1" ng-class="{ live: live, background_1 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be6875a63550b00be8f96)" style="width: 39px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be6f35a63550b00be8f9a background_0" ng-class="{ live: live, background_0 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be6f35a63550b00be8f9a)" style="width: 70px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be76e5a63550b00be8f9e background_0" ng-class="{ live: live, background_0 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be76e5a63550b00be8f9e)" style="width: 41px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be8f45a63550b00be8fa2 background_0" ng-class="{ live: live, background_0 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be8f45a63550b00be8fa2)" style="width: 70px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be9645a63550b00be8fa6 background_0" ng-class="{ live: live, background_0 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be9645a63550b00be8fa6)" style="width: 28px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be99d5a63550b00be8faa background_3" ng-class="{ live: live, background_3 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be99d5a63550b00be8faa)" style="width: 57px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534be9da5a63550b00be8fae background_0" ng-class="{ live: live, background_0 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534be9da5a63550b00be8fae)" style="width: 60px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534bea3a5a63550b00be8fb2 background_0" ng-class="{ live: live, background_0 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534bea3a5a63550b00be8fb2)" style="width: 68px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534bea775a63550b00be8fb6 background_0" ng-class="{ live: live, background_0 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534bea775a63550b00be8fb6)" style="width: 74px;"></li><!-- end ngRepeat: item in info_bar --><li ng-repeat="item in info_bar" class="info_item info_bar_534beab15a63550b00be8fba background_0" ng-class="{ live: live, background_0 : (!live || (item.start_time_in_secs < curr_time)), played: item.start_time_in_secs < curr_time }" data-id="" ng-click="showInfo(534beab15a63550b00be8fba)" style="width: 43px;"></li><!-- end ngRepeat: item in info_bar -->
+        </ul>
+    </div>
+</div>
+
+</div>
+
+
+<div class="content_wrapper cf">
+    <!-- ngView:  --><div class="content ng-scope" ng-class="{ open: (login_show || signup_show || playlist_show || profile_show) &amp;&amp; !home }" ng-view=""></div>
+</div>
+
+<script src="/components/jquery/dist/jquery.js"></script>
+<script src="/components/moment/moment.js"></script>
+<script src="/components/sugar/release/sugar-full.development.js"></script>
+<script src="/components/jquery.preloadimages/jquery.preloadimages.js"></script>
+<script src="/components/lodash/dist/lodash.js"></script>
+<script src="/components/angular/angular.js"></script>
+<script src="/components/mediaelement/build/mediaelement-and-player.js"></script>
+<script src="/components/angular-resource/angular-resource.js"></script>
+<script src="/components/angular-route/angular-route.js"></script>
+<script src="/components/jquery-backstretch/jquery.backstretch.js"></script>
+<script src="/components/angular-carousel/dist/angular-carousel.js"></script>
+<script src="/components/WOW/dist/wow.js"></script>
+<script src="/components/jquery.event.drag-drop/event.drag/jquery.event.drag.js"></script>
+<script src="/components/jquery.transform.js/jquery.transform2d.js"></script>
+<script src="/components/socket.io-client/dist/socket.io.js"></script>
+<script src="/components/"></script>
+<script src="/js/custom.js"></script>
+<script src="/js/filters.js"></script>
+<script src="/js/services.js"></script>
+<script src="/js/controllers.js"></script>
+<script src="/routes.js"></script>
+
+<script>
+    var thereIsALoggedInUser = true;
+
+    $(function () {
+        window.player = new MediaElementPlayer('#player2', {
+            enablePluginDebug: true,
+            // if the <video width> is not specified, this is the default
+            defaultVideoWidth: 480,
+            // if the <video height> is not specified, this is the default
+            defaultVideoHeight: 270,
+            // if set, overrides <video width>
+            videoWidth: -1,
+            // if set, overrides <video height>
+            videoHeight: -1,
+            // width of audio player
+            audioWidth: '100%',
+            // height of audio player
+            audioHeight: 20,
+            // initial volume when the player starts
+            startVolume: 0,
+            // useful for <audio> player loops
+            loop: false,
+            // name of flash file
+            flashName: '/components/mediaelement/build/flashmediaelement.swf',
+            // enables Flash and Silverlight to resize to content size
+            enableAutosize: true,
+            // the order of controls you want on the control bar (and other plugins below)
+            features: ['progress', 'fullscreen'],
+            // Hide controls when playing and mouse is not over the video
+            alwaysShowControls: false,
+            // force iPad's native controls
+            iPadUseNativeControls: false,
+            // force iPhone's native controls
+            iPhoneUseNativeControls: false,
+            // force Android's native controls
+            AndroidUseNativeControls: false,
+            // forces the hour marker (##:00:00)
+            alwaysShowHours: false,
+            // show framecount in timecode (##:00:00:00)
+            showTimecodeFrameCount: false,
+            // used when showTimecodeFrameCount is set to true
+            framesPerSecond: 25,
+            // turns keyboard support on and off for this instance
+            enableKeyboard: true,
+            // when this player starts, it will pause other players
+            pauseOtherPlayers: true,
+            // array of keyboard commands
+            keyActions: [],
+            plugins: ['flash'],
+            pluginVars: 'isvideo=true'
+        });
+    });
+</script>
+
+
+</body></html>

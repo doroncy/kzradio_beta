@@ -1,0 +1,16 @@
+<div class="banner-area broadcasters">
+    <div class="site-width">
+        <h1>שדרנים</h1>
+    </div>
+</div>
+
+<div class="body broadcasters">
+    <div class="site-width">
+        <div class="broadcaster" ng-repeat="broadcaster in broadcasters">
+            <a href="[[navigation.broadcasters]][[broadcaster.url]]">
+                <img ng-src="[[broadcaster.picture.url]]/convert?w=243&h=243&fit=crop" width="243" height="243"/>
+                <h2>[[broadcaster.first_name]] [[broadcaster.last_name]]</h2>
+            </a>
+        </div>
+    </div>
+</div>

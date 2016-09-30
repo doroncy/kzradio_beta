@@ -1,0 +1,46 @@
+{
+  "name": "kz-radio",
+  "version": "0.1.1",
+  "private": true,
+  "engines": {
+    "node": "4.2.1"
+  },
+  "dependencies": {
+    "async": "",
+    "mongoose": "4.x.x",
+    "consolidate": "",
+    "disconnect": "https://registry.npmjs.org/disconnect/-/disconnect-0.5.3.tgz",
+    "dustjs-helpers": "",
+    "dustjs-linkedin": "",
+    "express": "< 4.0.0",
+    "formage": "git://github.com/kzradio/formage.git",
+    "lodash": "",
+    "lodash-contrib": "",
+    "mpromise": "",
+    "nodemailer": "",
+    "nodestrum": "",
+    "passport": "",
+    "passport-local": "",
+    "passport-oauth": "^1.0.0",
+    "password-hash": "",
+    "password-reset": "",
+    "regexp-clone": "https://registry.npmjs.org/regexp-clone/-/regexp-clone-0.0.1.tgz",
+    "request": "",
+    "sliced": "https://registry.npmjs.org/sliced/-/sliced-0.0.5.tgz",
+    "socket.io": "1.x.x",
+    "to-locals": "",
+    "moment-timezone": "latest"
+  },
+  "scripts": {
+    "start": "node server/app.js",
+    "test": "node ./node_modules/mocha/bin/_mocha",
+    "cover": "istanbul cover ./node_modules/mocha/bin/_mocha -x generated/**"
+  },
+  "devDependencies": {
+    "mysql": "latest",
+    "jasmine-core": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.5"
+  }
+}

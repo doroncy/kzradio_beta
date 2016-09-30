@@ -1,0 +1,32 @@
+
+<div class="banner-area-2">
+    <div class="banner" style="background: url([[post.picture.url]]/convert?w=1025&h=467&fit=crop);"><h1>[[post.title]]</h1>
+</div>
+
+<div class="body">
+    <div class="site-width">
+        <article class="border-part2">
+            <section class="left magazine_post">
+                <p ng-bind-html="trustHtml(post.text)"></p>
+                <div class="lead" ng-show="post.lead">
+                    <h1 ng-bind-html="trustHtml(post.lead)"></h1>
+                </div>
+                <p ng-show="post.text2" ng-bind-html="trustHtml(post.text2)"></p>
+            </section>
+            <section class="right">
+                <p style='color:#e40909;'>
+                    [[post.date|date]]<br>
+                    מאת:
+                    <a href="[[navigation.broadcasters]]/[[post.user._id]]" class="author">[[post.user.first_name]] [[post.user.last_name]]</a>
+                </p>
+            </section>
+        </article>
+    </div>
+</div>
+
+<!-- TODO: P2 -->
+<!--div class="site-width">
+    <div class="facebook-section-2">
+        <iframe src="http://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=50" scrolling="no" frameborder="0" style="border:none; overflow:hidden;width:380px; height:50px;" allowTransparency="true"></iframe>
+    </div>
+</div-->
